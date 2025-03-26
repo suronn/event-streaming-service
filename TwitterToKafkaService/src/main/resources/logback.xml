@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="DEV_HOME" value="./TwitterToKafkaService"/>
+    <property name="APP_NAME" value="TwitterToKafkaService"/>
+
+    <!-- Console Appender (logs to console) -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- Log pattern for console output -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Rolling File Appender (logs to a file with rotation) -->
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${DEV_HOME}/logs/${APP_NAME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Log file will roll every day -->
+            <fileNamePattern>l${DEV_HOME}/archived/${APP_NAME}-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- Keep logs for the last 30 days -->
+            <maxHistory>30</maxHistory>
+            <!-- Keep logs of 10MB per file -->
+            <maxFileSize>10MB</maxFileSize>
+        </rollingPolicy>
+        <encoder>
+            <!-- Log pattern for file output -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root Logger (default logging level) -->
+    <root level="INFO">
+        <!-- Attach both Console and Rolling appenders -->
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ROLLING"/>
+    </root>
+
+    <!-- Specific Logger for Debugging (example) -->
+    <logger name="com.streaming" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ROLLING"/>
+    </logger>
+
+</configuration>
