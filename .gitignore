@@ -1,37 +1,78 @@
-HELP.md
-.gradle
-build/
+# Ignore build and dependencies directories
+/build/
+.gradle/
 !gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+!gradle/wrapper/gradle-wrapper.properties
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+# Ignore compiled Java class files
+*.class
 
-### IntelliJ IDEA ###
-.idea
-*.iws
+# Ignore logs and temporary files
+logs/
+*.log
+*.out
+*.err
+*.pid
+*.seed
+*.sync
+hs_err_pid*
+
+# Ignore IntelliJ IDEA project files
+.idea/
 *.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+*.iws
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Ignore Eclipse project files
+.project
+.classpath
+.settings/
 
-### VS Code ###
+# Ignore VS Code settings
 .vscode/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Windows system files
+Thumbs.db
+Desktop.ini
+
+# Ignore temporary and backup files
+*.bak
+*.swp
+*.swo
+
+# Ignore Java and Spring Boot specific files
+/target/
+out/
+bin/
+!src/main/resources/
+!src/main/resources/static/
+!src/main/resources/templates/
+
+# Ignore test reports
+/test-output/
+test-results/
+surefire-reports/
+jacoco/
+coverage-reports/
+
+# Ignore dependencies and build artifacts
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# Ignore application-specific environment files
+.env
+*.env.local
+*.env.production
+*.env.development
+application.properties
+application.yml
+application-dev.properties
+application-prod.properties
+
+# Ignore docker-related files (if using Docker)
+docker-compose.override.yml

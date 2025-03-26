@@ -1,6 +1,6 @@
 package com.streaming.twittertokafkaservice.runner.impl;
 
-import com.streaming.twittertokafkaservice.config.TwitterToKafkaConfig;
+import com.streaming.appconfigdata.TwitterToKafkaConfig;
 import com.streaming.twittertokafkaservice.listener.TwitterListener;
 import com.streaming.twittertokafkaservice.runner.StreamRunner;
 import jakarta.annotation.PreDestroy;

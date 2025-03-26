@@ -1,18 +1,20 @@
 package com.streaming.twittertokafkaservice;
 
-import com.streaming.twittertokafkaservice.config.TwitterToKafkaConfig;
+import com.streaming.appconfigdata.TwitterToKafkaConfig;
 import com.streaming.twittertokafkaservice.runner.StreamRunner;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.Arrays;
 
 @SpringBootApplication
 @AllArgsConstructor
 @Slf4j
+@ComponentScan("com.streaming")
 public class TwitterToKafkaServiceApplication implements CommandLineRunner {
 
     private final TwitterToKafkaConfig twitterToKafkaConfig;

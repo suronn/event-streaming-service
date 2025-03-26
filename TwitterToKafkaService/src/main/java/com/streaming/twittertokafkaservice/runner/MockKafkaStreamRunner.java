@@ -1,6 +1,6 @@
 package com.streaming.twittertokafkaservice.runner;
 
-import com.streaming.twittertokafkaservice.config.TwitterToKafkaConfig;
+import com.streaming.appconfigdata.TwitterToKafkaConfig;
 import com.streaming.twittertokafkaservice.exception.TwitterToKafkaServiceException;
 import com.streaming.twittertokafkaservice.listener.TwitterListener;
 import lombok.AllArgsConstructor;
@@ -49,7 +49,7 @@ public class MockKafkaStreamRunner implements StreamRunner {
     private static final String TWITTER_STATUS_DATE_FORMAT = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
 
     @Override
-    public void start() throws TwitterException {
+    public void start(){
         String[] keywords = twitterToKafkaConfig.getTwitterKeywords().toArray(new String[0]);
         int minTweetLength = twitterToKafkaConfig.getMockMinTweetLength();
         int maxTweetLength = twitterToKafkaConfig.getMockMaxTweetLength();
@@ -68,7 +68,8 @@ public class MockKafkaStreamRunner implements StreamRunner {
                 Status status = TwitterObjectFactory.createStatus(formatterTweetAsRawJson);
                 twitterListener.onStatus(status);
                 sleep(sleepMs);
-            }} catch (TwitterException e) {
+            }
+           } catch (TwitterException e) {
                log.error("Error during simulating twitter stream", e);
             }
         });
